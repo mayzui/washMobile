@@ -11,10 +11,14 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - uses: actions/checkout@main
-        - uses: borales/actions-yarn@v3.0.0
-          with:
-            cmd: install
-        - uses: borales/actions-yarn@v3.0.0
-          with:
-            run: yarn docs:build
+        - name: CopyCodeToAnBuildContainer
+          uses: actions/checkout@v3
+
+        - name: Independences
+          uses: borales/actions-yarn@v3.0.0
+          run:  yarn install
+
+        - name: toPackage
+          uses: borales/actions-yarn@v3.0.0
+          run: yarn docs:build
+

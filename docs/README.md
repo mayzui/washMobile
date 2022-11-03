@@ -1,6 +1,6 @@
 ---
 home: true
-title: 过刚则折 过满则溢 人生有度 物极必反
+title: 过刚则折 过满则溢 人生有度 物极必反1
 heroImage: images/logo.png
 actions:
 - text: 开始写作
