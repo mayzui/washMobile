@@ -1,4 +1,4 @@
-name: release
+name: RELEASE
 
 on:
     push:
@@ -6,26 +6,32 @@ on:
       tags:
         - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 jobs:
-  pr:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          check-latest: true
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+    task0:
+      steps:
+        - name: Print a greeting
+          env:
+            MY_VAR: Hi there! My name is
+            FIRST_NAME: Mona
+            MIDDLE_NAME: The
+            LAST_NAME: Octocat
+          run: |
+            echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+    task1:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Check Out Codes
 
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+        - uses: actions/setup-node@v2
+        - name: Get Yarn Cache directory path
+          with:
+            node-version: '14'
+            check-latest: true
+          id: yarn-cache-dir-path
+          run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn
-        
-      - name: buildData
-        run: yarn run build
+        - uses: actions/cache@v2
+        - name: Install Dependencies
+          run: npm install
+
+
