@@ -2,36 +2,26 @@ name: RELEASE
 
 on:
     push:
-      # Sequence of patterns matched against refs/tags
+      branches:
+        - main
       tags:
         - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 jobs:
-    task0:
-      steps:
-        - name: Print a greeting
-          env:
-            MY_VAR: Hi there! My name is
-            FIRST_NAME: Mona
-            MIDDLE_NAME: The
-            LAST_NAME: Octocat
-          run: |
-            echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
     task1:
       runs-on: ubuntu-latest
+
       steps:
-        - uses: actions/checkout@v2
-        - name: Check Out Codes
+        - name: Checkout
+          uses: actions/checkout@v3
 
-        - uses: actions/setup-node@v2
-        - name: Get Yarn Cache directory path
-          with:
-            node-version: '14'
-            check-latest: true
-          id: yarn-cache-dir-path
-          run: echo "::set-output name=dir::$(yarn cache dir)"
+        - name: Setup node
+            uses: actions/setup-node@v3
+            with:
+              node-version: 14.18.2
+              cache: npm
 
-        - uses: actions/cache@v2
-        - name: Install Dependencies
-          run: npm install
+        - name: Install
+            run: npm install
 
-
+        - name: Install
+            run: npm build
