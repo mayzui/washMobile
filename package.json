@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "document",
   "main": "index.js",
   "repository": "https://gitee.com/mayzui/docs.git",
