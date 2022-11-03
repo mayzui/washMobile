@@ -31,3 +31,4 @@ VuePress 需要 Node.js (opens new window)>= 8.6
 
 1.  参考[vuePress](https://v2.vuepress.vuejs.org/zh/)
 2.  不需要贡献什么,拿去玩就行
+3.  添加github工作流
