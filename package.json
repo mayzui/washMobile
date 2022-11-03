@@ -1,16 +1,20 @@
 {
   "name": "docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "document",
   "main": "index.js",
   "repository": "https://gitee.com/mayzui/docs.git",
   "author": "mayzui <ssi_lavarel@163.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "release": "node ./scripts/release.js"
   },
   "devDependencies": {
+    "@actions/github": "^5.1.1",
+    "node-fetch": "^3.2.10",
     "vuepress": "^2.0.0-beta.48"
   }
 }
