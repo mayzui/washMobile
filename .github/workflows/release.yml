@@ -12,16 +12,16 @@ jobs:
 
       steps:
         - name: Checkout
-          uses: actions/checkout@v3
+        - uses: actions/checkout@v3
 
         - name: Setup node
-          uses: actions/setup-node@v3
+        - uses: borales/actions-yarn@v1.22.19
           with:
             node-version: 14.18.2
             cache: npm
 
         - name: Install
-          run: npm install
+          run: yarn install
 
         - name: Build
-          run: npm run build
+          run: yarn docs:build
