@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { getOctokit, context } from '@actions/github';
 import fs from 'fs';
 
-import updateLog from './updatelog.js';
+import updateLog from './updatelog.mjs';
 
 const token = process.env.GITHUB_TOKEN;
 
