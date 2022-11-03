@@ -42,3 +42,8 @@ test
 
 - feat: 读懂代码
 - fix: bug
+
+## v1.0.5
+
+- feat: 读懂代码
+- fix: bug
