@@ -22,4 +22,3 @@ jobs:
             npm install -g yarn
             yarn
             yarn docs:build
-            yarn test
