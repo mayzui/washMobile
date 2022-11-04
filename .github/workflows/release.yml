@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 14.18.x ] # Only run the 14.18.x build
+        node-version: [ 14.18.2 ] # Only run the 14.18.x build
     steps:
       - name: Use Node.js $
         uses: actions/checkout@v1
       - name: install node
-        uses: actions/setup-node@v1
-      - name: package
+        uses: actions/setup-node@v2
+      - name: package data
         run: |
             npm install -g yarn
             yarn
