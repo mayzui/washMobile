@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: $
       - name: package
-          run: |
+        run: |
             npm install -g yarn
             yarn
             yarn docs:build
