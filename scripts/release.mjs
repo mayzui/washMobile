@@ -10,7 +10,6 @@ import fs from 'fs';
 async function release () {
     const flag = process.argv[2] ?? 'z';
     const packageJson = require('../package.json');
-    console.log(packageJson.version)
     let [x, y, z] = packageJson.version.split('.').map(Number);
     switch (flag) {
         case  'x':
@@ -30,10 +29,13 @@ async function release () {
             process.exit(1);
     }
 
+
     const newVersion = `${x}.${y}.${z}`
+
+    console.log('From Version:', packageJson.version, ' To Version', newVersion)
+
     packageJson.version = newVersion
     const nextTag = `v${newVersion}`
-
     await updateLog(nextTag, 'release');
     // 将新版号码写入 package.json 文件
     fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));

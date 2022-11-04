@@ -1,4 +1,4 @@
-name: RELEASE
+name: YarnCI
 
 on:
     push:
@@ -7,18 +7,24 @@ on:
       tags:
         - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 jobs:
-    task1:
-      runs-on: ubuntu-latest
-
-      steps:
-        - name: CopyCodeToAnBuildContainer
-          uses: actions/checkout@v3
-
-        - name: Independences
-          uses: borales/actions-yarn@v3.0.0
-          run:  yarn install
-
-        - name: toPackage
-          uses: borales/actions-yarn@v3.0.0
-          run: yarn docs:build
-
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.18.x ] # Only run the 14.18.x build
+    steps:
+      -
+      name: Use Node.js $
+      uses: actions/checkout@v1
+      -
+      name: install node
+      uses: actions/setup-node@v1
+      with:
+          node-version: $
+      -
+      name: package
+      run: |
+        npm install -g yarn
+        yarn
+        yarn docs:build
+        yarn test
